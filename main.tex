@@ -1,0 +1,60 @@
+\documentclass{book}
+
+\usepackage{xeCJK}
+
+% 算法
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithmicx,algorithm}
+
+\begin{document}
+
+\title{算法简化描述}
+\author{陈磊}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+\listofalgorithms
+
+\chapter{非线性方程求根}
+
+\chapter{线性方程组求解}
+
+\chapter{微分方程数值解}
+
+\section{龙格库塔(Runge Kutta)}
+\subsection{四阶龙格库塔}
+\begin{equation}
+	\frac{dy}{dx}=f(x,y), y(0)=y_0
+\end{equation}
+
+\begin{algorithm}
+\caption{四阶龙格库塔} %算法的名字
+\hspace*{0.02in} {\bf Input:} %算法的输入， \hspace*{0.02in}用来控制位置，同时利用 \\ 进行换行
+$y_0$, $h$, $n$\\
+\hspace*{0.02in} {\bf Output:} %算法的结果输出
+$y_i$
+\begin{algorithmic}[1]
+\For{i=1:n}
+	\State $k_1=f(x_i,y_i)$
+	\State $k_2=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_1h)$
+	\State $k_3=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_2h)$
+	\State $k_4=f(x_i+h,y_i+k_3h)$
+	\State $y_{i+1} = y_i + \frac{1}{6}(k_1+2k_2+2k_3+k_4)h$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+求解微分方程组.
+
+\chapter{最优化}
+
+\chapter{随机搜索}
+\section{遗传算法(Genetic Algorithm, GA)}
+\section{粒子群算法(Particle Swarm Optimization, PSO)}
+
+\chapter{数据分析}
+\section{聚类}
+
+\end{document}
