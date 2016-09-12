@@ -6,11 +6,13 @@
 	\end{equation}
 \end{problem}
 
-\section{步长及停止准则}
-\subsection{步长}
+\section{停止准则}
+
+\section{步长}
+
+\subsection{Backtracking Search}
 
 
-\subsection{停止准则}
 
 \section{直接搜索}
 指无需对目标函数求导的搜索方法, 比如文献\cite{schutze2011directed}中的方法.
@@ -37,3 +39,11 @@
 加速邻近梯度法(算法\ref{alg:accelerated_proximal_gradient})迭代到一定程度时, 外推系数$\beta_k$趋于0, 算法退化成梯度法(算法\ref{alg:gradient_descent}). 使用该算法自适应的重置参数, 能够保持加速邻近梯度法的快速收敛.
 
 \input{algorithms/adaptive_restart_accelerated_proximal_gradient}
+
+
+
+
+
+\section{牛顿法及拟牛顿法}
+
+\subsection{Broyden–Fletcher–Goldfarb–Shanno Algorithm(BFGS)}
