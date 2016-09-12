@@ -1,13 +1,6 @@
 \documentclass[a4paper,11pt,oneside]{book}
 
-\usepackage{xeCJK}
-
-% 生成PDF书签
-\usepackage{hyperref}
-
-% 算法
-\usepackage[noend]{algpseudocode}
-\usepackage{algorithmicx,algorithm}
+\input{format.cls}
 
 \begin{document}
 
@@ -18,6 +11,7 @@
 \maketitle
 \frontmatter
 
+\pdfbookmark{\contentsname}{toc}
 \tableofcontents
 \listofalgorithms
 % \listoffigures
@@ -25,101 +19,20 @@
 
 \mainmatter
 
-\chapter{非线性方程求根}
-
-\chapter{线性方程组求解}
-
-\chapter{微分方程数值解}
-
-\section{龙格库塔(Runge Kutta)}
-\subsection{四阶龙格库塔}
-\begin{equation}
-	\frac{dy}{dx}=f(x,y), y(0)=y_0
-\end{equation}
-
-\begin{algorithm}
-\caption{四阶龙格库塔} %算法的名字
-{\bf Require:} $f, y_0, h, n$
-\begin{algorithmic}[1]
-\For{$i=0,1,\ldots$}
-	\State $k_1=f(x_i,y_i)$
-	\State $k_2=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_1h)$
-	\State $k_3=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_2h)$
-	\State $k_4=f(x_i+h,y_i+k_3h)$
-	\State $y_{i+1} = y_i + \frac{1}{6}(k_1+2k_2+2k_3+k_4)h$
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-
-求解微分方程组.
+% \chapter{非线性方程求根}
+% \chapter{线性方程组求解}
 
 
-
-\chapter{最优化算法}
-
-\section{直接搜索}
-指无需对目标函数求导的搜索方法, 比如\cite{schutze2011directed}.
-
-\subsection{单纯形法(Simplex Search Method)}
+\input{chapter/numerical_solution_of_differential_equations}
+\input{chapter/numerical_optimization}
 
 
-\section{梯度法(Gradient Method)}
+% \chapter{随机搜索}
+% \section{遗传算法(Genetic Algorithm, GA)}
+% \section{粒子群算法(Particle Swarm Optimization, PSO)}
 
-\subsection{梯度法(Gradient Descent Method)}
-
-梯度法或称梯度下降法.
-
-\begin{algorithm}
-\caption{梯度法}
-\label{alg:APG}
-{\bf Require:} $x_0\in {\bf R}^n$
-\begin{algorithmic}[1]
-\For{$k=0,1,\ldots$}
-	\State $x_{k+1}=y_k-t_k\nabla f(y_k)$
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-
-\subsection{加速邻近梯度法(Accelerated Proximal Gradient Method, APG)}
-
-此方法由Nesterov\cite{nesterov1983method}首先提出.
-
-\begin{algorithm}
-\caption{加速邻近梯度法\cite{nesterov1983method,nesterov1998introductory}}
-\label{alg:APG}
-{\bf Require:} $x_0\in {\bf R}^n, y_0=x_0, \theta_0=1, q\in[0,1]$
-\begin{algorithmic}[1]
-\For{$k=0,1,\ldots$}
-	\State $x_{k+1}=y_k-t_k\nabla f(y_k)$
-	\State $\theta_{k+1}^2=(1-\theta_{k+1})\theta_k^2+q\theta_{k+1}, \theta_{k+1}\in (0,1)$, 求解 $\theta_{k+1}$
-	\State $\beta_{k+1}=\theta_k(1-\theta_k)/(\theta_k^2+\theta_{k+1})$
-	\State $y_{k+1}=x_{k+1}+\beta_{k+1}(x_{k+1}-x_k)$
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-其中, $\theta_{k+1}\in (0,1)$见文献\cite{nesterov1998introductory} 91页. 当$q=1$时, 该算法为梯度法.
-
-\subsection{自适应重启加速梯度法}
-
-加速邻近梯度法(算法\ref{alg:APG})迭代到一定程度时, 外推系数$\beta_k$趋于0, 算法退化成梯度法. 使用该算法自适应的重置参数, 能够保持加速邻近梯度法的快速收敛.
-
-\begin{algorithm}
-\caption{自适应重启加速梯度法\cite{o2015adaptive}}
-{\bf Require:} $x_0\in {\bf R}^n, y_0=x_0, \theta_0=1$
-\begin{algorithmic}[1]
-\For{$j=0,1,\ldots$}
-	\State 取$q=0$执行算法\ref{alg:APG}, 直到 $f(x_k)>f(x_{k+1})$时停止 (或可以在 $\nabla f(y_{k-1})^T(x_k-x_{k-1})$时停止, 两者选其中一种)
-	\State $x_0=x_k, y_0=x_k, \theta_0=1$
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-
-\chapter{随机搜索}
-\section{遗传算法(Genetic Algorithm, GA)}
-\section{粒子群算法(Particle Swarm Optimization, PSO)}
-
-\chapter{数据分析}
-\section{聚类}
+% \chapter{数据分析}
+% \section{聚类}
 
 \backmatter
 \bibliographystyle{plain}
