@@ -1,0 +1,14 @@
+\begin{algorithm}
+\caption{四阶龙格库塔}
+\label{alg:runge_kutta_4th}
+{\bf Require:} $f, y_0, h, n$
+\begin{algorithmic}[1]
+\For{$i=0,1,\ldots$}
+	\State $k_1=f(x_i,y_i)$
+	\State $k_2=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_1h)$
+	\State $k_3=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}k_2h)$
+	\State $k_4=f(x_i+h,y_i+k_3h)$
+	\State $y_{i+1} = y_i + \frac{1}{6}(k_1+2k_2+2k_3+k_4)h$
+\EndFor
+\end{algorithmic}
+\end{algorithm}

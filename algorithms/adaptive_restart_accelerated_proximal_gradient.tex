@@ -1,0 +1,11 @@
+\begin{algorithm}
+\caption{自适应重启加速梯度法\cite{o2015adaptive}}
+\label{alg:adaptive_restart_accelerated_proximal_gradient}
+{\bf Require:} $x_0\in {\bf R}^n, y_0=x_0, \theta_0=1$
+\begin{algorithmic}[1]
+\For{$j=0,1,\ldots$}
+	\State 取$q=0$执行算法\ref{alg:accelerated_proximal_gradient}, 直到 $f(x_k)>f(x_{k-1})$时停止 (或可以在 $\nabla f(y_{k-1})^T(x_k-x_{k-1})$时停止, 两者选其中一种)
+	\State $x_0=x_k, y_0=x_k, \theta_0=1$
+\EndFor
+\end{algorithmic}
+\end{algorithm}

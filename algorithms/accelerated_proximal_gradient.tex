@@ -1,0 +1,13 @@
+\begin{algorithm}
+\caption{加速邻近梯度法\cite{nesterov1983method,nesterov1998introductory}(APG)}
+\label{alg:accelerated_proximal_gradient}
+{\bf Require:} $x_0\in {\bf R}^n, y_0=x_0, \theta_0=1, q\in[0,1]$
+\begin{algorithmic}[1]
+\For{$k=0,1,\ldots$}
+	\State $x_{k+1}=y_k-t_k\nabla f(y_k)$
+	\State $\theta_{k+1}^2=(1-\theta_{k+1})\theta_k^2+q\theta_{k+1}, \theta_{k+1}\in (0,1)$, 求解 $\theta_{k+1}$
+	\State $\beta_{k+1}=\theta_k(1-\theta_k)/(\theta_k^2+\theta_{k+1})$
+	\State $y_{k+1}=x_{k+1}+\beta_{k+1}(x_{k+1}-x_k)$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
