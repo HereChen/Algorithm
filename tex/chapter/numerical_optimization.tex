@@ -26,19 +26,19 @@
 
 梯度法或称梯度下降法.
 
-\input{algorithms/gradient_descent}
+\input{tex/algorithm/gradient_descent}
 
 \subsection{加速邻近梯度法(Accelerated Proximal Gradient Method)}
 
 此方法由Nesterov\cite{nesterov1983method}首先提出. 其中, $\theta_{k+1}\in (0,1)$见文献\cite{nesterov1998introductory} 91页. 当$q=1$时, 该算法为梯度法.
 
-\input{algorithms/accelerated_proximal_gradient}
+\input{tex/algorithm/accelerated_proximal_gradient}
 
 \subsection{自适应重启加速梯度法}
 
 加速邻近梯度法(算法\ref{alg:accelerated_proximal_gradient})迭代到一定程度时, 外推系数$\beta_k$趋于0, 算法退化成梯度法(算法\ref{alg:gradient_descent}). 使用该算法自适应的重置参数, 能够保持加速邻近梯度法的快速收敛.
 
-\input{algorithms/adaptive_restart_accelerated_proximal_gradient}
+\input{tex/algorithm/adaptive_restart_accelerated_proximal_gradient}
 
 
 

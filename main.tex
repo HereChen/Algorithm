@@ -1,21 +1,15 @@
 \documentclass[a4paper,11pt,oneside]{book}
 
-\input{format.cls}
+\usepackage{main}
 
 \begin{document}
 
-\title{算法简化描述}
-\author{陈磊}
-\date{\today}
 
-\maketitle
+\include{tex/title}
+
 \frontmatter
 
-\pdfbookmark{\contentsname}{toc}
-\tableofcontents
-\listofalgorithms
-% \listoffigures
-% \listoftables
+\include{tex/content}
 
 \mainmatter
 
@@ -23,8 +17,8 @@
 % \chapter{线性方程组求解}
 
 
-\input{chapter/numerical_solution_of_differential_equations}
-\input{chapter/numerical_optimization}
+\include{tex/chapter/numerical_solution_of_differential_equations}
+\include{tex/chapter/numerical_optimization}
 
 
 % \chapter{随机搜索}
@@ -35,7 +29,7 @@
 % \section{聚类}
 
 \backmatter
-\bibliographystyle{plain}
-\bibliography{bibliography}
+
+\include{tex/bib}
 
 \end{document}
