@@ -16,4 +16,4 @@ watch: $(PROJNAME).tex
 # clean temp files
 clean:
 	latexmk -c
-	rm -f *.lol *.bbl *.auxlock *.synctex.gz tex/*.aux
+	rm -f *.loa *.lol *.bbl *.auxlock *.synctex.gz tex/*.aux
