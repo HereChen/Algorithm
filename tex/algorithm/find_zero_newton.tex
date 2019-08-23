@@ -1,0 +1,15 @@
+\begin{algorithm}
+  \caption{牛顿法求根 (Newton)}
+  \label{alg:find_zero_newton}
+  {\bf Require:} $f, \nabla f, x_0\in {\bf R}, x_k=x_0, x_{k+1}=x0, eps 机器精度$
+
+  \begin{algorithmic}[1]
+    \While {true}
+      \State $x_{k+1} = x_k - f(x_k)/\nabla f(x_k)$
+      \If{$\abs{x_{k+1}-x_k} \le eps$ \textbf{or} $\abs{f(x_{k+1})} \le eps$}
+        \State \textbf{break}
+      \EndIf
+      \State $x_k=x_{k+1}$
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,10 @@
+\appendix
+% 附录编号
+% https://tex.stackexchange.com/questions/174621/numbering-appendices-by-letter-instead-of-number
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+\renewcommand{\thesection}{\Alph{section}}
+
+\section{代码}
+
+\lstinputlisting[language=julia, caption={牛顿法求根}]{find_zero_newton.jl}

@@ -1,19 +1,67 @@
-% 行间距
+\usepackage{xcolor, color}
+
+%% 行间距
 \linespread{1.25}
 
-% 中文
+%% 中文
 \usepackage{xeCJK}
 
-% 生成PDF书签
+%% 生成PDF书签
 \usepackage{hyperref}
 
-% 数学
+%% 数学
 \usepackage{amsmath, amssymb}
+\usepackage{commath}             % abs, norm
 
-% 算法
+%% 算法
 % \usepackage[noend]{algpseudocode} % 无结束标识 EndFor, EndIf
 \usepackage{algpseudocode}
 \usepackage{algorithmicx,algorithm}
 
-% 自定义命令
+%% 代码
+\usepackage{listings}
+\usepackage{accsupp}
+\newcommand*\lstinputpath[1]{\lstset{inputpath=#1}}
+\newcommand{\noncopynumber}[1]{\BeginAccSupp{ActualText={}}#1\EndAccSupp{}}
+\lstset{
+    basicstyle       = \ttfamily\small,
+    columns          = flexible, % code copy
+    numbers          = left,
+    backgroundcolor  = \color[HTML]{F6F6F6},
+    numberstyle      = \color[HTML]{B3B2B3}\noncopynumber,
+    commentstyle     = \color[HTML]{8E8E8E},
+    stringstyle      = \color[HTML]{800000},
+    % identifierstyle  = \color[HTML]{435489},
+    % keywordstyle     = \color[HTML]{C7254E}\bfseries,
+    % morecomment      = [s][\color[HTML]{006CA9}]{/**}{*/},
+    xleftmargin      = 2.5em,
+    framexleftmargin = 2.3em,
+    stepnumber       = 1,
+    numbersep        = 5pt,
+    showspaces       = false,
+    showstringspaces = false,
+    showtabs         = false,
+    tabsize          = 2,
+    captionpos       = t,
+    breaklines       = true,
+    postbreak        = \raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    breakatwhitespace=false,
+    breakautoindent  = true,
+    linewidth        = \textwidth
+}
+% Julia definition (c) 2014 Jubobs
+\lstdefinelanguage{julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+  %  alsoother={$},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+%% 自定义命令
 \newtheorem{problem}{Problem}
